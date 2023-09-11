@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nested Loop Example</title>
+</head>
+<body>
+
+<h>Lists can be nested(list inside list):</h>
+
+<ul id="item-list">
+</ul>
+
+<script>
+    // Define some sample data
+    var categories = ["Coffee", "Tea", "Milk"];
+    var items = [
+        [],
+        ["Black tea", "Grean Tea"],
+        []
+        
+    ];
+
+    // Get the UL element where we want to display the items
+    var itemList = document.getElementById("item-list");
+
+    // Loop through the categories
+    for (var i = 0; i < categories.length; i++) {
+        var category = categories[i];
+        
+        // Create a new LI element for the category
+        var categoryItem = document.createElement("li");
+        categoryItem.textContent = category;
+        
+        // Create a new UL element for the items in this category
+        var itemSubList = document.createElement("ul");
+        
+        // Loop through the items in this category
+        for (var j = 0; j < items[i].length; j++) {
+            var item = items[i][j];
+            
+            // Create a new LI element for the item
+            var itemItem = document.createElement("li");
+            itemItem.textContent = item;
+            
+            // Append the item LI to the item UL
+            itemSubList.appendChild(itemItem);
+        }
+        
+        // Append the item UL to the category LI
+        categoryItem.appendChild(itemSubList);
+        
+        // Append the category LI to the main UL
+        itemList.appendChild(categoryItem);
+    }
+</script>
+
+</body>
+</html>
